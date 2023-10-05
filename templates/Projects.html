@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="/assets/css/output.css">
+    <!-- HTMX -->
+    <script src="/assets/js/htmx.js"></script>
+
+    <script>
+        document.body.addEventListener('htmx:afterOnLoad', function(event) {
+            var links = document.querySelectorAll('nav div');
+            links.forEach(link => link.classList.remove('bg-gray-700'));
+            event.target.classList.add('bg-gray-700');
+        });
+
+    </script>
+
+    <link rel="icon" href="/favicon.png">
+</head>
+    <body class="bg-brey">
+        <h1 class="text-white">Hello World! This is the Projects Page!</h1>
+    </body>
+</html>

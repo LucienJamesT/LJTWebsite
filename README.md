@@ -1,2 +1,1 @@
-# LJTWebsite
-My own personal website
+# Web

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="/assets/css/output.css">
+    <!-- HTMX -->
+    <script src="/assets/js/htmx.js"></script>
+
+    <link rel="icon" href="/favicon.png">
+</head>
+<body class="bg-brey"> 
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto">
+            <div class="flex justify-between">
+                <div class="text-white">
+                    <!-- Logo or site name -->
+                    <div hx-get="/Home" hx-trigger="click" hx-target="#content" class="text-white px-4 cursor-pointer">Lucien's Home Page</div>
+                </div>
+                <div>
+                    <!-- Navbar links -->
+                    <div hx-get="/About-Me" hx-trigger="click" hx-target="#content" class="text-white px-4 cursor-pointer">About Me</div>
+                    <div hx-get="/Resume" hx-trigger="click" hx-target="#content" class="text-white px-4 cursor-pointer">Resume</div>
+                    <div hx-get="/Projects" hx-trigger="click" hx-target="#content" class="text-white px-4 cursor-pointer">Projects</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Container for loading content -->
+    <div id="content" hx-trigger="load">
+    </div>
+    
+
+    <script>
+        document.body.addEventListener('htmx:afterOnLoad', function(event) {
+            var links = document.querySelectorAll('nav div');
+            links.forEach(link => link.classList.remove('bg-gray-700'));
+            event.target.classList.add('bg-gray-700');
+        });
+        document.addEventListener('DOMContentLoaded', function(event) {
+            htmx.trigger('#content', 'load', { url: '/Home' });
+        });
+    </script>
+</body>
+</html>
